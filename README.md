@@ -2,20 +2,43 @@
 
 A Java 17 / Spring Boot 3.5.16 learning project for Vrund Patel. Sign in, create tasks, edit notes, mark tasks complete, and delete them. The same features are exposed through a session-authenticated REST API.
 
-## Run the ready-built app on macOS
+## Run from GitHub on macOS or Linux
 
-1. Extract this ZIP into a folder, for example `~/Downloads/task-manager`.
-2. Check Java in Terminal: `java -version`. Java 17 or newer is required. A supported Java 17 distribution is sufficient; Maven is only needed to change and rebuild the code.
-3. Open Terminal in the extracted `task-manager` folder and run:
+You need Git, Java 17 (recommended), and Maven 3.6.3 or later. Check your tools in Terminal:
+
+```bash
+git --version
+java -version
+mvn --version
+```
+
+Clone the repository, build and test the app, then prepare the launcher:
+
+```bash
+git clone https://github.com/coder4421/spring-boot-task-manager.git
+cd spring-boot-task-manager
+mvn verify
+cp target/task-manager-1.0.0.jar task-manager.jar
+bash start.sh
+```
+
+If you already cloned the repository, open its folder and start with `mvn verify`. Wait for `BUILD SUCCESS` before copying the JAR and starting the app. The first build needs internet access to download dependencies.
+
+GitHub's **Code → Download ZIP** also contains source code only. Extract it, open Terminal in the extracted folder containing `pom.xml`, and run the same build, copy, and launch commands. An executable JAR is not included in this repository or GitHub's source ZIP.
+
+## Run a separately supplied ready-built ZIP
+
+If you received the original ready-built ZIP containing `task-manager.jar`, you only need Java to run it. Extract the ZIP, open Terminal in its `task-manager` folder, and run:
 
 ```bash
 bash start.sh
 ```
 
+## Sign in and use the app
+
 The launcher asks for a username and a password without displaying the password. Choose 3-64 letters, digits, underscores, dots, or hyphens for the username. Passwords must have at least 12 characters and at most 72 UTF-8 bytes. No default account or password is shipped.
 
-4. Keep Terminal open. Visit http://localhost:8080 and sign in with those credentials.
-5. Press Control+C in Terminal to stop the app.
+Keep Terminal open. Visit http://localhost:8080 and sign in with those credentials. Press Control+C in Terminal to stop the app.
 
 Tasks and password hashes are saved under `data/` in the project folder and survive restarts. Use the same folder on future runs. The launcher always changes into its own folder so the database location stays consistent. Back up the folder while the app is stopped if you want to preserve your tasks.
 
