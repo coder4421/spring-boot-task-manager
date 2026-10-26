@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="csrf-token" th:content="${_csrf.token}"><meta name="csrf-header" th:content="${_csrf.headerName}">
+<title>Your tasks · Task Manager</title><link rel="stylesheet" href="/style.css"><script src="/app.js" defer></script>
+</head><body><div class="shell">
+<header><a class="brand" href="/">✓ Task Manager</a><div class="account"><span th:text="${username}">User</span>
+<form th:action="@{/logout}" method="post"><button class="quiet" type="submit">Sign out</button></form></div></header>
+<main><section class="intro"><p class="eyebrow">MAKE ROOM FOR WHAT MATTERS</p><h1>One task at a time.</h1><p class="muted">A clear place for your plans, big and small.</p></section>
+<div id="message" class="notice" role="status" aria-live="polite" hidden></div>
+<div class="workspace"><section class="editor panel"><p class="eyebrow">YOUR NEXT STEP</p><h2 id="editor-title">Add a task</h2>
+<form id="task-form"><label for="title">Task name</label><input id="title" maxlength="140" placeholder="What would you like to get done?" required>
+<label for="description">Notes <span class="muted">(optional)</span></label><textarea id="description" rows="5" maxlength="2000" placeholder="A few details to help you get started"></textarea>
+<label class="check-label"><input id="completed" type="checkbox"> Already completed</label>
+<div class="actions"><button class="primary" id="save" type="submit">Add task</button><button id="cancel" class="quiet" type="button" hidden>Cancel edit</button></div>
+</form></section>
+<section class="task-area"><div class="section-heading"><h2>Your tasks <span id="total" class="count">0</span></h2><span id="progress" class="muted"></span></div>
+<p id="empty" class="empty panel" hidden>No tasks yet. Add your first step on the left.</p><div id="tasks" aria-live="polite"></div>
+<nav class="pagination" aria-label="Task pages"><button id="previous" class="quiet" type="button">Previous</button><span id="page-label"></span><button id="next" class="quiet" type="button">Next</button></nav>
+</section></div></main><footer>Small steps. Steady progress.</footer></div></body></html>

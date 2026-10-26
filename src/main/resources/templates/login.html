@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sign in · Task Manager</title><link rel="stylesheet" href="/style.css">
+</head><body class="login-page"><main class="login-card">
+<p class="eyebrow">A LITTLE MORE FOCUS</p><h1>Your next<br>step starts here.</h1>
+<p class="muted">Sign in to your personal task list.</p>
+<p role="alert" class="notice error" th:if="${param.error}">Username or password is incorrect.</p>
+<p class="notice" th:if="${param.logout}">You have signed out.</p>
+<form th:action="@{/login}" method="post">
+<label for="username">Username</label><input id="username" name="username" autocomplete="username" required autofocus maxlength="64">
+<label for="password">Password</label><input type="password" id="password" name="password" autocomplete="current-password" required>
+<button type="submit" class="primary full">Sign in</button></form>
+<p class="footnote">Use the account you configured when starting the app.</p>
+</main></body></html>
